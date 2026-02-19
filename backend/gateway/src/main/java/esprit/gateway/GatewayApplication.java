@@ -18,7 +18,17 @@ public class GatewayApplication {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder){
 
         return builder.routes() .route("candidat",r->r.path("/mic1/**")
-                       .uri("lb://CANDIDAT") )
+                        .uri("lb://CANDIDAT") )
+
+                .route("job",r->r.path("/mic2/**")
+                        .uri("lb://JOB") )
+                .route("candidature",r->r.path("/mic3/**")
+                        .uri("lb://CANDIDATURE") )
+                .route("notification",r->r.path("/mic4/" +
+                                "**")
+                        .uri("lb://NOTIFICATION") )
+                .route("meeting",r->r.path("/mic5/**")
+                        .uri("lb://MEETING") )
                 .build();
     }
 }
